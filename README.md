@@ -31,6 +31,7 @@ A second set of files are outputs of the travel model:
   - **Passenger origin-destination matrices**
   - **Freight origin-destination matrices** 
   - **Internal/External trip matrices** 
+
 These output files may be useful if researchers optionally wish to --- for example --- include freight
 processes in the model steps or simply include them as background traffic.
 
