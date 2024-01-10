@@ -16,7 +16,7 @@ sandbox may use a whichever of the several network engines that they have availa
 This repository contains several files that researchers can draw upon to generate their own scenarios. 
 The files are compiled from and for the trip-based model developed by Fehr & Peers for the Cache Valley 
 Metropolitan Planning Organization (MPO), which oversees transportation planning efforts in the Logan, 
-Utah metropolitan area. The files are provided courtesty of the Utah Department of Transportation 
+Utah metropolitan area. The files are provided courtesy of the Utah Department of Transportation 
 and the Cache Valley MPO.
 
 The first set of files are drawn from the inputs to the travel model:
