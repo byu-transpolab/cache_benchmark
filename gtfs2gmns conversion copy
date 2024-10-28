@@ -679,7 +679,7 @@ def gtfs2gmns(input_path, output_path):
                                 20: 'agency_name',
                                 21: 'stop_sequence',
                                 22: 'directed_service_id'}, inplace=True)
-    all_node_df.to_csv('transit_node.csv', index=False)   #Creates node file with given name.
+    all_node_df.to_csv('transit_node_2.csv', index=False)   #Creates node file with given name.
     #  zone_df = pd.read_csv('zone.csv')
     #  source_node_df = pd.read_csv('source_node.csv')
     #  node_df = pd.concat([zone_df, all_node_df])
@@ -687,10 +687,10 @@ def gtfs2gmns(input_path, output_path):
     all_link_df = all_link_df.drop_duplicates(
         subset=['from_node_id', 'to_node_id'],
         keep='last').reset_index(drop=True)
-    all_link_df.to_csv('transit_link.csv', index=False)
+    all_link_df.to_csv('transit_link_2.csv', index=False)
     
-    shutil.move("transit_link.csv", output_path)
-    shutil.move("transit_node.csv", output_path)
+    shutil.move("transit_link_2.csv", output_path)
+    shutil.move("transit_node_2.csv", output_path)
     
     '''
     if os.path.exists("transit/output/transit_link.csv"):
@@ -725,7 +725,7 @@ def gtfs2gmns(input_path, output_path):
 if __name__ == '__main__':
     global period_start_time
     global period_end_time
-    input_path = 'transit/transit/gtfs'
+    input_path = 'transit/transit/gtfs_2'
     output_path = 'transit/transit/output'
     #time_period_id = 1
     time_period = '0000_2359'

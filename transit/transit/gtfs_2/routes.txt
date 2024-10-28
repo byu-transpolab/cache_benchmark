@@ -1,0 +1,26 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+2,CVTD,1,"USU, NE Logan 1600 E",,3,,0c55a2,ffffff 
+3,CVTD,2,"L.R. Hospital - 800 E",,3,,0c55a2,ffffff 
+4,CVTD,3,"Island, Cliffside",,3,,0c55a2,ffffff 
+5,CVTD,10,"Island, River Heights",,3,,0c55a2,ffffff 
+7,CVTD,5,"North Logan, CV Hospital",,3,,0c55a2,ffffff 
+8,CVTD,6,"Fairgrounds, Woodruff Elementary",,3,,0c55a2,ffffff 
+9,CVTD,7,"South Logan, Rec Center",,3,,0c55a2,ffffff 
+10,CVTD,8,"West Logan, BATC",,3,,0c55a2,ffffff 
+11,CVTD,9,"NW Logan, 1800 N",,3,,0c55a2,ffffff 
+12,CVTD,11,"ICON, Nibley",,3,,0c55a2,ffffff
+13,CVTD,16 AM,"Logan, Lewiston, Preston",,3,,0c55a2,ffffff 
+14,CVTD,15,"USU, Smithfield, Richmond",,3,,0c55a2,ffffff
+15,CVTD,16 PM,"Logan, Lewiston, Preston",,3,,0c55a2,ffffff 
+16,CVTD,13,"Providence, Millville, Hyrum",,3,,0c55a2,ffffff 
+17,CVTD,14,"Providence, Millville",,3,,0c55a2,ffffff
+18,CVTD,12,"Hyrum",,3,,0c55a2,ffffff 
+22,CVTD,Tripper D,"South Logan, Rec Center",,3,,0c55a2,ffffff 
+23,CVTD,Tripper B,"Mt. Logan Middle School",,3,,0c55a2,ffffff 
+24,CVTD,Tripper C,"West Logan, Fast Forward Charter School",,3,,0c55a2,ffffff 
+26,CVTD,G1,"Logan",,3,,84cd27,ffffff 
+27,CVTD,G2,"Logan",,3,,84cd27,ffffff 
+28,CVTD,G3,"Logan",,3,,84cd27,ffffff 
+30,CVTD,B1,"Logan",,3,,29baf1,ffffff 
+31,CVTD,B2,"Logan",,3,,29baf1,ffffff 
+32,CVTD,B3,"Logan",,3,,29baf1,ffffff 
