@@ -1,5 +1,6 @@
 import pandas as pd
 from simpledbf import Dbf5
+import geopandas as gpd
 
 # read the link dbf to a csv and export
 def dbflinks_to_csv(dbf_file, csv_file):
@@ -7,8 +8,25 @@ def dbflinks_to_csv(dbf_file, csv_file):
     dbf = Dbf5(dbf_file)
     df = dbf.to_dataframe()
 
+    # Load the existing CSV file
+    csv_path = 'links.csv'
+    existing_df = pd.read_csv(csv_path)
+
+    # Load the shapefile
+    shapefile_path = 'links shape.shp'
+    gdf = gpd.read_file(shapefile_path)
+
+    # Select the column you want to export (replace 'your_column' with the actual column name)
+    new_column = gdf[['geometry']]
+
+    # Concatenate the new column to the existing DataFrame
+    combined_df = pd.concat([existing_df, new_column], axis=1)
+
+    # Save the combined DataFrame back to the CSV file
+    combined_df.to_csv(csv_path, index=False)
+
    # Define the columns you want to keep
-    new_order = ['LINKID', 'STREET', 'A', 'B', 'ONEWAY', 'DISTANCE', 'TYPE', 'CFAC']  # Replace with your desired columns
+    new_order = ['LINKID', 'STREET', 'A', 'B', 'ONEWAY', 'geometry', 'DISTANCE', 'TYPE', 'CFAC']  # Replace with your desired columns
 
     # Drop columns that are not in the new order
     df = df[new_order]
