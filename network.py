@@ -8,7 +8,7 @@ def dbflinks_to_csv(dbf_file, csv_file):
     df = dbf.to_dataframe()
 
    # Define the columns you want to keep
-    new_order = ['LINKID', 'STREET', 'A', 'B', 'ONEWAY', 'DISTANCE', 'TYPE', 'CFAC']  # Replace with your desired columns
+    new_order = ['LINKID', 'STREET', 'A', 'B', 'ONEWAY', 'DISTANCE', 'TYPE', 'CFAC', 'BIKE_FAC']  # Replace with your desired columns
 
     # Drop columns that are not in the new order
     df = df[new_order]
@@ -21,7 +21,7 @@ def dbflinks_to_csv(dbf_file, csv_file):
 
     # Step 2: Rename the columns
     # For example, if you want to rename 'old_name1' to 'new_name1' and 'old_name2' to 'new_name2':
-    df.rename(columns={'LINKID': 'link_id', 'STREET': 'name', 'A': 'from_node_id', 'B': 'to_node_id', 'ONEWAY': 'directed', 'DISTANCE': 'length', 'TYPE': 'facility_type', 'CFAC': 'capacity'}, inplace=True)
+    df.rename(columns={'LINKID': 'link_id', 'STREET': 'name', 'A': 'from_node_id', 'B': 'to_node_id', 'ONEWAY': 'directed', 'DISTANCE': 'length', 'TYPE': 'facility_type', 'CFAC': 'capacity', 'BIKE_FAC': 'bike_facility'}, inplace=True)
 
     # Step 3: Save the modified DataFrame back to a CSV file
     df.to_csv('links.csv', index=False)
