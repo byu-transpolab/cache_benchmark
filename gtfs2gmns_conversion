@@ -1,3 +1,8 @@
+
+
+#Scroll to the bottom for the only code that needs to be edited. 
+
+
 import copy
 import os
 import math
@@ -679,7 +684,7 @@ def gtfs2gmns(input_path, output_path):
                                 20: 'agency_name',
                                 21: 'stop_sequence',
                                 22: 'directed_service_id'}, inplace=True)
-    all_node_df.to_csv('transit_node_2.csv', index=False)   #Creates node file with given name.
+    all_node_df.to_csv(transit_node_name, index=False)   #Creates node file with given name. If the name already exists, it won't work, so give it a unique name.
     #  zone_df = pd.read_csv('zone.csv')
     #  source_node_df = pd.read_csv('source_node.csv')
     #  node_df = pd.concat([zone_df, all_node_df])
@@ -687,50 +692,46 @@ def gtfs2gmns(input_path, output_path):
     all_link_df = all_link_df.drop_duplicates(
         subset=['from_node_id', 'to_node_id'],
         keep='last').reset_index(drop=True)
-    all_link_df.to_csv('transit_link_2.csv', index=False)
+    all_link_df.to_csv(transit_link_name, index=False) 
     
-    shutil.move("transit_link_2.csv", output_path)
-    shutil.move("transit_node_2.csv", output_path)
-    
-    '''
-    if os.path.exists("transit/output/transit_link.csv"):
-        print(f"link file already exists. Choose a different name or location and rerun.")
-        
-    else:
-    # Move the file
-        try:
-            shutil.move("transit_link.csv", output_path)
-            print(f"File moved successfully to '{output_path}'")
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            
-    if os.path.exists("transit/output/transit_node.csv"):
-        print(f"Nodes file already exists. Choose a different name or location and rerun.")
-        sys.exit()
-    else:
-    # Move the file
-        try:
-            shutil.move("transit_node.csv", output_path)
-            print(f"File moved successfully to '{output_path}'")
-            
-        except Exception as e:
-            print(f"An error occurred: {e}")
-    '''
-    
-    
+    shutil.move(transit_node_name, output_path)
+    shutil.move(transit_link_name, output_path)   
     
     print('run time -->', time.time() - start_time)  #Give total run time
 
 
+
+
+
+
+
+
+
+
+
+
+'''
+
+
+
+Here is the only part of the code that needs to be modified. 
+
+
+
+
+'''
 if __name__ == '__main__':
     global period_start_time
     global period_end_time
-    input_path = 'transit/transit/gtfs_2'
-    output_path = 'transit/transit/output'
+    
+    input_path = 'transit/Input gtfs/Cache'           # Where you are reading the gtfs data from. 
+    output_path = 'transit/Output/Cache_transit'      # Where the files will be placed upon completion. 
+    transit_node_name = 'transit_node.csv'              # Name of nodes. Must be Unique
+    transit_link_name = 'transit_link.csv'              # Name of Links. Must be Unique
+    time_period = '0000_2359'                           # The time period of the data. The code below changes the format.
+    
     #time_period_id = 1
-    time_period = '0000_2359'
     period_start_time, period_end_time = _hhmm_to_minutes(time_period)
-
     gtfs2gmns(input_path, output_path)
 
 

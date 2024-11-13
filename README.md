@@ -54,3 +54,23 @@ If you implement the a model in this sandbox, we would kindly request for you to
   - A report of model failure statistics
   - Assigned highway volumes at counted locations in a CSV file.
 An example report is provided in this repository. 
+
+## Converting .dbf files to .cvs
+1. Open network.py and scroll to the bottom
+2. Replace input_dbf and inputn_dbf  with your DBF file paths
+3. Replace output_csv and outputn_csv with your desired CSV file paths
+4. Run Code. 
+
+## Converting gtfs data to gmns
+Thanks to the fokes at [the ASU transportation lab](https://github.com/asu-trans-ai-lab/GTFS2GMNS/tree/main), gtfs transit data may be converted into gmns data. 
+
+### Obtaining gtfs data
+Transit authorities freely offer thier routes for any who would want it. 
+Websites such as [Mobility Database](https://mobilitydatabase.org), [Transit Feeds](https://transitfeeds.com), and [Transit Land](https://www.transit.land/feeds) are good places to find this data. 
+
+Learn more about gtfs [here](https://gtfs.org)
+
+### Conversion Steps 
+1. Open the gtfs2gmns_conversion.py and scroll to the bottom.
+2. Modify input_path, output_path, transit_node_name, and transit_link_name as needed. time_period may also be modified if only a certain period is desired.
+3. Run code.
