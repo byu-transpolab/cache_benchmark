@@ -11,6 +11,18 @@ def read_dbf(dbf_file):
 # Function to save the DataFrame to CSV
 def save_to_csv(df, csv_file):
     df.to_csv(csv_file, index=False)
+
+#This is to be used when the facility_type column uses integers rather than strings.
+    #If the values in the facility_type column are integers, use this function to convert them to strings based on your data.
+#def factype_to_string(factype_value):
+    #if isinstance(factype_value, int):
+        #factype_dict = {
+            #1: 'Type 1', 
+            #2: 'Type 2', 
+            #3: 'Type 3', 
+        #}
+        #return factype_dict.get(factype_value, f'Unknown Type {factype_value}')
+    #return 'Invalid FACTYPE'
  
 # Function to process and convert DBF links to CSV
 def dbflinks_to_csv(dbf_file, shp_file, csv_file):
@@ -30,6 +42,14 @@ def dbflinks_to_csv(dbf_file, shp_file, csv_file):
 
         # Merge shapefile GeoDataFrame and DBF DataFrame based on 'ID'
         merged = pd.merge(df, shapefile_geometry, on='LINKID', how='left')
+
+    #This is to be used when the facility_type column uses integers rather than strings.
+        # Ensure the 'FACTYPE' column is in integer format before applying conversion
+        #merged['FACTYPE'] = merged['FACTYPE'].astype('Int64', errors='ignore')
+
+        # Apply the factype_to_string function to the 'FACTYPE' column
+        #merged['FACTYPE'] = merged['FACTYPE'].apply(factype_to_string) 
+
 
         # Rename columns and reorder them
         merged.rename(columns={
