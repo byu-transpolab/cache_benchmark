@@ -120,14 +120,14 @@ def dbfnodes_to_csv(dbf_file, csv_file):
 if __name__ == "__main__":
     try:
         # Convert links DBF to CSV
-        dbflinks_to_csv('links.dbf', 'links_shape.shp', 'links.csv')
+        dbflinks_to_csv('links.dbf', 'links_shape.shp', 'hwy/links.csv')
         print("Converted links 'links.dbf' to 'links.csv' successfully.")
        
         # Convert nodes DBF to CSV
-        dbfnodes_to_csv('nodes.dbf', 'nodes.csv')
+        dbfnodes_to_csv('hwy/src/nodes.dbf', 'hwy/nodes.csv')
         print("Converted nodes 'nodes.dbf' to 'nodes.csv' successfully.")
 
-        ##Alternative: Use if the zone_id column does not exist in you nodes file
+        #Alternative: Use if the zone_id column does not exist in you nodes file
         # Merge zones with nodes
         #merge_zones_with_nodes('nodes_from_cube.csv', 'zones.csv', 'nodes.csv')
         #print("Merged zones data into 'nodes_from_cube.csv' and saved to 'nodes.csv'.")
