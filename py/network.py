@@ -57,16 +57,15 @@ def dbflinks_to_csv(dbf_file, shp_file, csv_file):
             'STREET': 'name',
             'A': 'from_node_id',
             'B': 'to_node_id',
-            'ONEWAY': 'directed',
             'DISTANCE': 'length',
-            'TYPE': 'facility_type',
-            'CFAC': 'capacity',
+            'UDOT_FC': 'facility_type',
+            'ONEWAY': 'lanes',
             'BIKE_FAC': 'bike_facility'
         }, inplace=True)
  
          # List the columns to keep (those that are renamed)
         columns_to_keep = ['link_id', 'name', 'from_node_id', 'to_node_id', 
-                           'directed', 'length', 'facility_type', 'capacity', 
+                            'length', 'facility_type', 
                            'bike_facility', 'geometry']
         
         # Drop columns that are not in the 'columns_to_keep' list
@@ -120,11 +119,11 @@ def dbfnodes_to_csv(dbf_file, csv_file):
 if __name__ == "__main__":
     try:
         # Convert links DBF to CSV
-        dbflinks_to_csv('links.dbf', 'links_shape.shp', 'hwy/links.csv')
+        dbflinks_to_csv('hwy/src/links.dbf', 'hwy/src/links_shape.shp', 'hwy/link.csv')
         print("Converted links 'links.dbf' to 'links.csv' successfully.")
        
         # Convert nodes DBF to CSV
-        dbfnodes_to_csv('hwy/src/nodes.dbf', 'hwy/nodes.csv')
+        dbfnodes_to_csv('hwy/src/nodes.dbf', 'hwy/node.csv')
         print("Converted nodes 'nodes.dbf' to 'nodes.csv' successfully.")
 
         #Alternative: Use if the zone_id column does not exist in you nodes file
