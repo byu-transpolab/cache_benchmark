@@ -12,6 +12,10 @@ def read_dbf(dbf_file):
 def save_to_csv(df, csv_file):
     df.to_csv(csv_file, index=False)
 
+#This will remove any duplicate links.
+def remove_duplicate_pairs(df):
+    return df.drop_duplicates(subset=['A', 'B'], keep='first')
+
 #This is to be used when the facility_type column uses integers rather than strings.
     #If the values in the facility_type column are integers, use this function to convert them to strings based on your data.
 #def factype_to_string(factype_value):
@@ -35,13 +39,19 @@ def dbflinks_to_csv(dbf_file, shp_file, csv_file):
     shapefile = gpd.read_file(shp_file)
  
 
-    # Ensure both shapefile and DBF have the 'ID' column
-    if 'LINKID' in shapefile.columns and 'LINKID' in df.columns:
-        # Select only the 'ID' and 'geometry' columns from the shapefile
-        shapefile_geometry = shapefile[['LINKID', 'geometry']]
+    # Merge geometry based on the from node and to node columns.
+    if {'A', 'B'}.issubset(shapefile.columns) and {'A', 'B'}.issubset(df.columns):
+        # Select only the 'A', 'B', and 'geometry' columns from the shapefile
+        shapefile_geometry = shapefile[['A', 'B', 'geometry']]
 
-        # Merge shapefile GeoDataFrame and DBF DataFrame based on 'ID'
-        merged = pd.merge(df, shapefile_geometry, on='LINKID', how='left')
+        # Merge shapefile GeoDataFrame and DBF DataFrame based on 'A' and 'B'
+        merged = pd.merge(df, shapefile_geometry, on=['A', 'B'], how='left')
+
+        # Remove duplicates
+        merged = remove_duplicate_pairs(merged)
+
+        # Log after duplicates are removed
+        print(f"After duplicate removal, {len(merged)} rows remain.")
 
     #This is to be used when the facility_type column uses integers rather than strings.
         # Ensure the 'FACTYPE' column is in integer format before applying conversion
